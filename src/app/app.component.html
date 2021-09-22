@@ -1,0 +1,13 @@
+<form [formGroup]="radioForm" (ngSubmit)="onSubmitMethod()">
+  <label>Select Required Status</label>
+  <div *ngFor="let status of statuses">
+    <input type="radio" [value]="status" formControlName="status" /> {{status}}
+  </div>
+  <div formGroupName="childform">
+    <input type="text" formControlName="username" />
+    <input type="text" formControlName="password" />
+  </div>
+  <button type="submit" [disabled]="!(radioForm.get('childform').valid)">
+    Submit me
+  </button>
+</form>
